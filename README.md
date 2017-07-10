@@ -22,7 +22,33 @@ py-RFCN-priv supports:
  - PIXEL_STD;
  - Anchors outside image (described in [FPN](https://arxiv.org/abs/1612.03144));
  - Performing bilinear interpolation operator accoording to input blobs size.
+ 
+ 
+### Installation
 
+1. Clone the py-RFCN-priv repository
+  ```Shell
+  git clone https://github.com/soeaver/py-RFCN-priv
+  ```
+  We'll call the directory that you cloned py-RFCN-priv into `RFCN_ROOT`
+
+2. Build the Cython modules
+    ```Shell
+    cd $RFCN_ROOT/lib
+    make
+    ```
+3. Build Caffe and pycaffe
+    ```Shell
+    cd $RFCN_ROOT/caffe-priv
+    # Now follow the Caffe installation instructions here:
+    #   http://caffe.berkeleyvision.org/installation.html
+
+    # If you're experienced with Caffe and have all of the requirements installed
+    # and your Makefile.config in place, then simply do:
+    cp Makefile.config.example Makefile.config
+    make all -j && make pycaffe -j
+   ```    
+   
 
 ### License
 
