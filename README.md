@@ -56,6 +56,7 @@ py-RFCN-priv supports:
     WITH_PYTHON_LAYER := 1
     # Unrelatedly, it's also recommended that you use CUDNN
     USE_CUDNN := 1
+    # NCCL is necessary for multi-GPU training with python layer, details are in https://github.com/NVIDIA/nccl
     USE_NCCL := 1
     ```
    
