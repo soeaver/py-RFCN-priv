@@ -21,6 +21,7 @@ py-RFCN-priv supports:
  - Label shuffling (only single GPU training);
  - PIXEL_STD;
  - Anchors outside image (described in [FPN](https://arxiv.org/abs/1612.03144));
+ - [ceil_mode](https://github.com/BVLC/caffe/pull/3057/files) in pooling layer ;
  - Performing bilinear interpolation operator accoording to input blobs size.
  
  
