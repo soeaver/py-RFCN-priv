@@ -42,13 +42,20 @@ py-RFCN-priv supports:
     cd $RFCN_ROOT/caffe-priv
     # Now follow the Caffe installation instructions here:
     #   http://caffe.berkeleyvision.org/installation.html
-
+    
+    # cp Makefile.config.example Makefile.config
     # If you're experienced with Caffe and have all of the requirements installed
     # and your Makefile.config in place, then simply do:
-    cp Makefile.config.example Makefile.config
     make all -j && make pycaffe -j
    ```    
    
+   **Note:** Caffe *must* be built with support for Python layers!
+   ```make
+   # In your Makefile.config, make sure to have this line uncommented
+   WITH_PYTHON_LAYER := 1
+   # Unrelatedly, it's also recommended that you use CUDNN
+   USE_CUDNN := 1
+   USE_NCCL := 1
 
 ### License
 
