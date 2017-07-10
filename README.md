@@ -51,13 +51,13 @@ py-RFCN-priv supports:
    ```    
    
    **Note:** Caffe *must* be built with support for Python layers!
-  ```make
-  # In your Makefile.config, make sure to have this line uncommented
-  WITH_PYTHON_LAYER := 1
-  # Unrelatedly, it's also recommended that you use CUDNN
-  USE_CUDNN := 1
-  USE_NCCL := 1
-  ```
+    ```make
+    # In your Makefile.config, make sure to have this line uncommented
+    WITH_PYTHON_LAYER := 1
+    # Unrelatedly, it's also recommended that you use CUDNN
+    USE_CUDNN := 1
+    USE_NCCL := 1
+    ```
    
   ### License
 
