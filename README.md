@@ -51,13 +51,34 @@ py-RFCN-priv supports:
    ```    
    
    **Note:** Caffe *must* be built with support for Python layers!
-   ```make
-   # In your Makefile.config, make sure to have this line uncommented
-   WITH_PYTHON_LAYER := 1
-   # Unrelatedly, it's also recommended that you use CUDNN
-   USE_CUDNN := 1
-   # For multi-GPU training, details in https://github.com/NVIDIA/nccl
-   USE_NCCL := 1
-   ```
+  ```make
+  # In your Makefile.config, make sure to have this line uncommented
+  WITH_PYTHON_LAYER := 1
+  # Unrelatedly, it's also recommended that you use CUDNN
+  USE_CUDNN := 1
+  USE_NCCL := 1
+  ```
    
-   
+  ### License
+
+py-RFCN-priv and caffe-priv are released under the MIT License (refer to the LICENSE file for details).
+
+
+### Citing 
+
+If you find R-FCN or sofe-nms useful in your research, please consider citing:
+
+    @article{dai16rfcn,
+        Author = {Jifeng Dai, Yi Li, Kaiming He, Jian Sun},
+        Title = {{R-FCN}: Object Detection via Region-based Fully Convolutional Networks},
+        Journal = {arXiv preprint arXiv:1605.06409},
+        Year = {2016}
+    }
+    
+    @article{1704.04503,
+      Author = {Navaneeth Bodla and Bharat Singh and Rama Chellappa and Larry S. Davis},
+      Title = {Improving Object Detection With One Line of Code},
+      Journal = {arXiv preprint arXiv:1704.04503},
+      Year = {2017}
+    }
+
