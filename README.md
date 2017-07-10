@@ -26,4 +26,4 @@ py-RFCN-priv supports:
 
 ### License
 
-py-RFCN-priv and caffe-priv is released under the MIT License (refer to the LICENSE file for details).
+py-RFCN-priv and caffe-priv are released under the MIT License (refer to the LICENSE file for details).
