@@ -22,3 +22,8 @@ py-RFCN-priv supports:
  - PIXEL_STD;
  - Anchors outside image (described in [FPN](https://arxiv.org/abs/1612.03144));
  - Performing bilinear interpolation operator accoording to input blobs size.
+
+
+### License
+
+R-FCN is released under the MIT License (refer to the LICENSE file for details).
