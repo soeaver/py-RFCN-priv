@@ -67,7 +67,7 @@ py-RFCN-priv and caffe-priv are released under the MIT License (refer to the LIC
 
 ### Citing 
 
-If you find R-FCN or sofe-nms useful in your research, please consider citing:
+If you find R-FCN or soft-nms useful in your research, please consider citing:
 
     @article{dai16rfcn,
         Author = {Jifeng Dai, Yi Li, Kaiming He, Jian Sun},
