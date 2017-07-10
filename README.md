@@ -18,7 +18,7 @@ caffe-priv supports [depthwise convolution](https://github.com/yonghenglh6/Depth
 ### New features
 
 py-RFCN-priv supports:
- - label shuffling (only single GPU training);
+ - Label shuffling (only single GPU training);
  - PIXEL_STD;
  - Anchors outside image (described in [FPN](https://arxiv.org/abs/1612.03144));
  - Performing bilinear interpolation operator accoording to input blobs size.
