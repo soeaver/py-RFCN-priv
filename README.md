@@ -37,6 +37,7 @@ py-RFCN-priv supports:
     cd $RFCN_ROOT/lib
     make
     ```
+    
 3. Build Caffe and pycaffe
     ```Shell
     cd $RFCN_ROOT/caffe-priv
@@ -59,9 +60,11 @@ py-RFCN-priv supports:
    USE_NCCL := 1
    ```
 
+
 ### License
 
 py-RFCN-priv and caffe-priv are released under the MIT License (refer to the LICENSE file for details).
+
 
 ### Citing 
 
