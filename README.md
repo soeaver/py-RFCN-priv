@@ -27,10 +27,10 @@ py-RFCN-priv supports:
 ### Installation
 
 1. Clone the py-RFCN-priv repository
-  ```Shell
-  git clone https://github.com/soeaver/py-RFCN-priv
-  ```
-  We'll call the directory that you cloned py-RFCN-priv into `RFCN_ROOT`
+    ```Shell
+    git clone https://github.com/soeaver/py-RFCN-priv
+    ```
+    We'll call the directory that you cloned py-RFCN-priv into `RFCN_ROOT`
 
 2. Build the Cython modules
     ```Shell
