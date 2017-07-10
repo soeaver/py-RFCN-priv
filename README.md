@@ -4,7 +4,6 @@ py-RFCN-priv is based on [py-R-FCN-multiGPU](https://github.com/bharatsingh430/p
 
 ### Disclaimer
 
-
 The official R-FCN code (written in MATLAB) is available [here](https://github.com/daijifeng001/R-FCN).
 
 py-R-FCN is modified from [the offcial R-FCN implementation](https://github.com/daijifeng001/R-FCN) and  [py-faster-rcnn code](https://github.com/rbgirshick/py-faster-rcnn ), and the usage is quite similar to [py-faster-rcnn](https://github.com/rbgirshick/py-faster-rcnn ).
@@ -57,7 +56,7 @@ py-RFCN-priv supports:
     WITH_PYTHON_LAYER := 1
     # Unrelatedly, it's also recommended that you use CUDNN
     USE_CUDNN := 1
-    # [NCCL](https://github.com/NVIDIA/nccl) is necessary for multi-GPU training with python layer
+    # NCCL (https://github.com/NVIDIA/nccl) is necessary for multi-GPU training with python layer
     USE_NCCL := 1
     ```
    
