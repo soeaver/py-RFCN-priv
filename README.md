@@ -57,6 +57,7 @@ py-RFCN-priv supports:
    USE_CUDNN := 1
    # For multi-GPU training, details in https://github.com/NVIDIA/nccl
    USE_NCCL := 1
+   ```
 
 ### License
 
