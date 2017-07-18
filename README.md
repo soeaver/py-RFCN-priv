@@ -12,7 +12,7 @@ py-R-FCN-multiGPU is a modified version of [py-R-FCN](https://github.com/Orpine/
 
 py-RFCN-priv also supports [soft-nms](https://github.com/bharatsingh430/soft-nms).
 
-caffe-priv supports [depthwise convolution](https://github.com/yonghenglh6/DepthwiseConvolution), [roi warping](https://github.com/daijifeng001/caffe-mnc), [roi mask pooling](https://github.com/craftGBD/caffe-GBD), [bilinear interpolation](https://bitbucket.org/deeplab/deeplab-public/).
+caffe-priv supports [convolution_depthwise](https://github.com/BVLC/caffe/pull/5665/files), [roi warping](https://github.com/daijifeng001/caffe-mnc), [roi mask pooling](https://github.com/craftGBD/caffe-GBD), [bilinear interpolation](https://bitbucket.org/deeplab/deeplab-public/), [selu](https://github.com/HolmesShuan/SNNs-Self-Normalizing-Neural-Networks-Caffe-Reimplementation).
 
 
 ### New features
