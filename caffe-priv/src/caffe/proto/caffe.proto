@@ -408,6 +408,8 @@ message LayerParameter {
   optional SoftmaxParameter softmax_param = 125;
   optional SPPParameter spp_param = 132;
   optional SliceParameter slice_param = 126;
+  optional SeLuParameter selu_param = 1001;
+  optional SeLuDropoutParameter selu_dropout_param = 1002;
   optional TanHParameter tanh_param = 127;
   optional ThresholdParameter threshold_param = 128;
   optional TileParameter tile_param = 138;
@@ -1245,6 +1247,16 @@ message SliceParameter {
 
   // DEPRECATED: alias for "axis" -- does not support negative indexing.
   optional uint32 slice_dim = 1 [default = 1];
+}
+
+message SeLuParameter {
+  optional float lambda = 1 [default = 1.050700987];
+  optional float alpha = 2 [default = 1.67326324];
+}
+
+message SeLuDropoutParameter {
+  optional float dropout_ratio = 1 [default = 0.1]; // dropout ratio  recommend 0.05 or 0.1
+  optional float alpha = 2 [default = -1.75809934];
 }
 
 message SmoothL1LossParameter {
