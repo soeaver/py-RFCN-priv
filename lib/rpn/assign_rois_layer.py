@@ -23,7 +23,7 @@ class AssignROISLayer(caffe.Layer):
     transformations to a set of regular boxes (called "anchors").
     """
     
-   def setup(self, bottom, top):
+    def setup(self, bottom, top):
         # parse the layer parameter string, which must be valid YAML
         layer_params = yaml.load(self.param_str)
 
