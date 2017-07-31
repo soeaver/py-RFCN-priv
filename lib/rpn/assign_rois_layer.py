@@ -1,8 +1,8 @@
 # --------------------------------------------------------
-# Faster R-CNN
-# Copyright (c) 2015 Microsoft
+# FPN
+# Copyright (c) 2017 BUPT-PRIV
 # Licensed under The MIT License [see LICENSE for details]
-# Written by Ross Girshick and Sean Bell
+# Written by Soeaver Yang
 # --------------------------------------------------------
 
 import caffe
