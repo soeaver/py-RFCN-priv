@@ -23,8 +23,8 @@ from fast_rcnn.config import cfg
 class coco21trainval_voc0712trainval(imdb):
     def __init__(self):
         imdb.__init__(self, 'coco21trainval_voc0712trainval')
-        self.data_root = '/home/prmct/Database/'
-        self.imageset_root = '/home/prmct/Database/MSCOCO/annotations/'
+        self.data_root = '~/Database/'
+        self.imageset_root = '~/Database/MSCOCO/annotations/'
         self.source = 'coco21trainval_voc0712trainval_image2xml.txt'
         self.img_set = 'coco21trainval_voc0712trainval.txt'
 
