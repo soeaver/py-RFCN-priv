@@ -22,8 +22,8 @@ from fast_rcnn.config import cfg
 class voc_0712_trainval(imdb):
     def __init__(self):
         imdb.__init__(self, 'voc_0712_trainval')
-        self.data_root = '/home/prmct/Database/VOC_PASCAL/'
-        self.imageset_root = '/home/prmct/Database/VOC_PASCAL/detection_set/'
+        self.data_root = os.path.join(cfg.DATABASE_ROOT, 'VOC_PASCAL')
+        self.imageset_root = os.path.join(cfg.DATABASE_ROOT, 'VOC_PASCAL/detection_set')
         self.source = '2007trainval_2012trainval_image2xml.txt'
         self.img_set = '2007trainval_2012trainval.txt'
 
