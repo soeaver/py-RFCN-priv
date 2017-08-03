@@ -41,7 +41,6 @@ namespace caffe {
   template <typename Dtype>
   void PSROIPoolingLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
     const vector<Blob<Dtype>*>& top) {
-    LOG(INFO)<<"psroipooling reshape";
     channels_ = bottom[0]->channels();
     CHECK_EQ(channels_, output_dim_*group_size_*group_size_)
       << "input channel number does not match layer parameters";
@@ -67,7 +66,6 @@ namespace caffe {
     const int group_size,
     Dtype* top_data,
     int* mapping_channel) {
-      LOG(INFO)<<"psroipooling cpu_forward";
      for (int n = 0; n < num; ++n) {
          int roi_add = n*5;
         // [start, end) interval for spatial sampling
@@ -161,7 +159,7 @@ namespace caffe {
   template <typename Dtype>
   void PSROIPoolingLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
     const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom) {
-  NOT_IMPLEMENTED; 
+    NOT_IMPLEMENTED; 
   }
 
 
