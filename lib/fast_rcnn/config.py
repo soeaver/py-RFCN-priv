@@ -202,7 +202,7 @@ __C.TEST.BBOX_REG_BATCH_SIZE = 300
 # MISC
 #
 
-__C.DATABASE_ROOT = '/home/${user_name}/Database/'    # for example: /home/priv/
+__C.DATABASE_ROOT = '/home/${user_name}/Database/'    # for example: /home/priv/Database/
 
 # The mapping from image coordinates to feature map coordinates might cause
 # some boxes that are distinct in image space to become identical in feature
