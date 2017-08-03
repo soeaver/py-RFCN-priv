@@ -19,19 +19,19 @@ import uuid
 from voc_eval import voc_eval
 from fast_rcnn.config import cfg
 
-
 class ilsvrc2017_det_train(imdb):
     def __init__(self):
         imdb.__init__(self, 'ilsvrc2017_det_train')
-        self.data_root = '/home/prmct/Database/ILSVRC2017/'
-        self.imageset_root = '/home/prmct/Database/ILSVRC2017/log/DET/'
-        self.source = 'ilsvrc2017_det_train_img2xml.txt'
-        self.img_set = 'ilsvrc2017_det_train_p.txt'
+        self.data_root = os.path.join(cfg.DATABASE_ROOT, 'ILSVRC2017')
+        self.source = os.path.join(cfg.DATABASE_ROOT, 'ILSVRC2017/log/DET', 'ilsvrc2017_det_train_img2xml.txt')
+        self.img_set = os.path.join(cfg.DATABASE_ROOT, 'ILSVRC2017/log/DET', 'ilsvrc2017_det_train_p.txt')
 
         assert os.path.exists(self.data_root), \
                 'Data root path does not exist: {}'.format(self.data_root)
-        assert os.path.exists(self.imageset_root), \
-                'Image set root path does not exist: {}'.format(self.imageset_root)
+        assert os.path.exists(self.source), \
+                'Source file does not exist: {}'.format(self.source)
+        assert os.path.exists(self.img_set), \
+                'Image set file does not exist: {}'.format(self.img_set)
 
         self._classes = ('__background__',  # always index 0
                          'n02672831', 'n02691156', 'n02219486', 'n02419796', 'n07739125',
@@ -75,7 +75,6 @@ class ilsvrc2017_det_train(imdb):
                          'n04517823', 'n04536866', 'n04540053', 'n04542943', 'n04554684',
                          'n04557648', 'n04530566', 'n02062744', 'n04591713', 'n02391049')
 
-
         self._class_to_ind = dict(zip(self.classes, xrange(self.num_classes)))
         self._image_index = self._load_image_set_index
         self.image_path_list = []
@@ -95,7 +94,7 @@ class ilsvrc2017_det_train(imdb):
         """
         Load the indexes listed in this dataset's image set file.
         """
-	f = open(self.imageset_root + self.source, 'r')
+	f = open(self.source, 'r')
         for i in f:
             self.image_path_list.append(self.data_root + i.strip().split(' ')[0])
             self.xml_path_list.append(self.data_root + i.strip().split(' ')[1])
@@ -126,10 +125,7 @@ class ilsvrc2017_det_train(imdb):
         """
         Load the indexes listed in this dataset's image set file.
         """
-        image_set_file = os.path.join(self.imageset_root + self.img_set)
-        assert os.path.exists(image_set_file), \
-                'Path does not exist: {}'.format(image_set_file)
-        with open(image_set_file) as f:
+        with open(self.img_set) as f:
             image_index = [x.strip() for x in f.readlines()]
 
         return image_index
