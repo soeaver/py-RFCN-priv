@@ -202,6 +202,8 @@ __C.TEST.BBOX_REG_BATCH_SIZE = 300
 # MISC
 #
 
+__C.DATABASE_ROOT = '/home/${user_name}/'    # for example: /home/priv/
+
 # The mapping from image coordinates to feature map coordinates might cause
 # some boxes that are distinct in image space to become identical in feature
 # coordinates. If DEDUP_BOXES > 0, then DEDUP_BOXES is used as the scale factor
