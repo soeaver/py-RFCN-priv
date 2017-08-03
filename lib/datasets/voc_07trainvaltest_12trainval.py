@@ -22,15 +22,16 @@ from fast_rcnn.config import cfg
 class voc_07trainvaltest_12trainval(imdb):
     def __init__(self):
         imdb.__init__(self, 'voc_07trainvaltest_12trainval')
-        self.data_root = '~/Database/VOC_PASCAL/'
-        self.imageset_root = '~/Database/VOC_PASCAL/detection_set/'
-        self.source = '2007trainvaltest_2012trainval_image2xml.txt'
-        self.img_set = '2007trainvaltest_2012trainval.txt'
+        self.data_root = os.path.join(cfg.DATABASE_ROOT, 'VOC_PASCAL')
+        self.source = os.path.join(cfg.DATABASE_ROOT, 'VOC_PASCAL/detection_set', '2007trainvaltest_2012trainval_image2xml.txt')
+        self.img_set = os.path.join(cfg.DATABASE_ROOT, 'VOC_PASCAL/detection_set', '2007trainvaltest_2012trainval.txt')
 
         assert os.path.exists(self.data_root), \
                 'Data root path does not exist: {}'.format(self.data_root)
-        assert os.path.exists(self.imageset_root), \
-                'Image set root path does not exist: {}'.format(self.imageset_root)
+        assert os.path.exists(self.source), \
+                'Source file does not exist: {}'.format(self.source)
+        assert os.path.exists(self.img_set), \
+                'Image set file does not exist: {}'.format(self.img_set)
 
         self._classes = ('__background__', # always index 0
                          'aeroplane', 'bicycle', 'bird', 'boat',
@@ -57,7 +58,7 @@ class voc_07trainvaltest_12trainval(imdb):
         """
         Load the indexes listed in this dataset's image set file.
         """
-	f = open(self.imageset_root + self.source, 'r')
+	f = open(self.source, 'r')
         for i in f:
             self.image_path_list.append(self.data_root + i.strip().split(' ')[0])
             self.xml_path_list.append(self.data_root + i.strip().split(' ')[1])
@@ -85,10 +86,7 @@ class voc_07trainvaltest_12trainval(imdb):
         """
         Load the indexes listed in this dataset's image set file.
         """
-        image_set_file = os.path.join(self.imageset_root + self.img_set)
-        assert os.path.exists(image_set_file), \
-                'Path does not exist: {}'.format(image_set_file)
-        with open(image_set_file) as f:
+        with open(self.img_set) as f:
             image_index = [x.strip() for x in f.readlines()]
 
         return image_index
