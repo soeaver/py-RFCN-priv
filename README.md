@@ -18,11 +18,13 @@ caffe-priv supports [convolution_depthwise](https://github.com/BVLC/caffe/pull/5
 ### New features
 
 py-RFCN-priv supports:
- - Label shuffling (only single GPU training);
- - PIXEL_STD;
- - Anchors outside image (described in [FPN](https://arxiv.org/abs/1612.03144));
- - [ceil_mode](https://github.com/BVLC/caffe/pull/3057/files) in pooling layer ;
+ - Label shuffling (only single GPU training).
+ - PIXEL_STD.
+ - Anchors outside image (described in [FPN](https://arxiv.org/abs/1612.03144)).
+ - [ceil_mode](https://github.com/BVLC/caffe/pull/3057/files) in pooling layer .
  - Performing bilinear interpolation operator accoording to input blobs size.
+ - 2017/07/31: Support LargeMarginSoftmax and cpu forward psroipooling;
+ - 2017/08/04: Add Deeplab and PSPNet support.
  
  
 ### Installation
