@@ -22,15 +22,16 @@ from fast_rcnn.config import cfg
 class wider_face_trainval(imdb):
     def __init__(self):
         imdb.__init__(self, 'wider_face_trainval')
-        self.data_root = '/home/prmct/Database/Wider_Face/'
-        self.imageset_root = '/home/prmct/Database/Wider_Face/wider_face_annotation_refine/'
-        self.source = 'wider_trainval_img2xml.txt'
-        self.img_set = 'wider_trainval.txt'
+        self.data_root = os.path.join(cfg.DATABASE_ROOT, 'Wider_Face')
+        self.source = os.path.join(cfg.DATABASE_ROOT, 'Wider_Face/wider_face_annotation_refine', 'wider_trainval_img2xml.txt')
+        self.img_set = os.path.join(cfg.DATABASE_ROOT, 'Wider_Face/wider_face_annotation_refine', 'wider_trainval.txt')
 
         assert os.path.exists(self.data_root), \
                 'Data root path does not exist: {}'.format(self.data_root)
-        assert os.path.exists(self.imageset_root), \
-                'Image set root path does not exist: {}'.format(self.imageset_root)
+        assert os.path.exists(self.source), \
+                'Source file does not exist: {}'.format(self.source)
+        assert os.path.exists(self.img_set), \
+                'Image set file does not exist: {}'.format(self.img_set)
 
         self._classes = ('__background__', # always index 0
                          'face')
@@ -53,7 +54,7 @@ class wider_face_trainval(imdb):
         """
         Load the indexes listed in this dataset's image set file.
         """
-	f = open(self.imageset_root + self.source, 'r')
+	f = open(self.source, 'r')
         for i in f:
             self.image_path_list.append(self.data_root + i.strip().split(' ')[0])
             self.xml_path_list.append(self.data_root + i.strip().split(' ')[1])
@@ -81,10 +82,7 @@ class wider_face_trainval(imdb):
         """
         Load the indexes listed in this dataset's image set file.
         """
-        image_set_file = os.path.join(self.imageset_root + self.img_set)
-        assert os.path.exists(image_set_file), \
-                'Path does not exist: {}'.format(image_set_file)
-        with open(image_set_file) as f:
+        with open(self.img_set) as f:
             image_index = [x.strip() for x in f.readlines()]
 
         return image_index

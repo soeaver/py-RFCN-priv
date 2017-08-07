@@ -21,6 +21,7 @@ import os.path as osp
 import numpy as np
 # `pip install easydict` if you don't have it
 from easydict import EasyDict as edict
+import getpass
 
 __C = edict()
 # Consumers can get config by:
@@ -201,6 +202,8 @@ __C.TEST.BBOX_REG_BATCH_SIZE = 300
 #
 # MISC
 #
+
+__C.DATABASE_ROOT = osp.abspath(osp.join('/home', getpass.getuser(), 'Database'))   # for example: /home/priv/Database
 
 # The mapping from image coordinates to feature map coordinates might cause
 # some boxes that are distinct in image space to become identical in feature

@@ -48,7 +48,7 @@ class BaseDataLayer : public Layer<Dtype> {
 template <typename Dtype>
 class Batch {
  public:
-  Blob<Dtype> data_, label_;
+  Blob<Dtype> data_, label_, dim_;
 };
 
 template <typename Dtype>
@@ -67,17 +67,47 @@ class BasePrefetchingDataLayer :
   virtual void Forward_gpu(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top);
 
+  // Prefetches batches (asynchronously if to GPU memory)
+  static const int PREFETCH_COUNT = 5;
+
  protected:
   virtual void InternalThreadEntry();
   virtual void load_batch(Batch<Dtype>* batch) = 0;
 
-  vector<shared_ptr<Batch<Dtype> > > prefetch_;
+  Batch<Dtype> prefetch_[PREFETCH_COUNT];
   BlockingQueue<Batch<Dtype>*> prefetch_free_;
   BlockingQueue<Batch<Dtype>*> prefetch_full_;
-  Batch<Dtype>* prefetch_current_;
 
   Blob<Dtype> transformed_data_;
 };
+
+template <typename Dtype>
+class ImageDimPrefetchingDataLayer : public BasePrefetchingDataLayer<Dtype> {
+ public:
+  explicit ImageDimPrefetchingDataLayer(const LayerParameter& param)
+      : BasePrefetchingDataLayer<Dtype>(param) {}
+  virtual ~ImageDimPrefetchingDataLayer() {}
+  // LayerSetUp: implements common data layer setup functionality, and calls
+  // DataLayerSetUp to do special data layer setup for individual layer types.
+  // This method may not be overridden.
+  void LayerSetUp(const vector<Blob<Dtype>*>& bottom,
+      const vector<Blob<Dtype>*>& top);
+
+  virtual void Forward_cpu(const vector<Blob<Dtype>*>& bottom,
+      const vector<Blob<Dtype>*>& top);
+  virtual void Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+      const vector<Blob<Dtype>*>& top);
+
+  // The thread's function
+  //virtual void InternalThreadEntry() {}
+
+ protected:
+  virtual void load_batch(Batch<Dtype>* batch) = 0;
+
+  Blob<Dtype> prefetch_data_dim_;
+  bool output_data_dim_;
+};
+
 
 }  // namespace caffe
 
