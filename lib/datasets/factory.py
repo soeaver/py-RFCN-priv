@@ -18,6 +18,7 @@ from datasets.voc_07trainvaltest_12trainval import voc_07trainvaltest_12trainval
 from datasets.coco21trainval_voc0712trainval import coco21trainval_voc0712trainval
 
 from datasets.coco81_trainval35k import coco81_trainval35k
+from datasets.coco81_trainval import coco81_trainval
 
 from datasets.wider_face_trainval import wider_face_trainval
 
@@ -29,6 +30,7 @@ __sets['voc_0712_trainval'] = voc_0712_trainval
 __sets['voc_07trainvaltest_12trainval'] = voc_07trainvaltest_12trainval
 __sets['coco21trainval_voc0712trainval'] = coco21trainval_voc0712trainval
 __sets['coco81_trainval35k'] = coco81_trainval35k
+__sets['coco81_trainval'] = coco81_trainval
 __sets['wider_face_trainval'] = wider_face_trainval
 __sets['ilsvrc2017_det_train'] = ilsvrc2017_det_train
 
