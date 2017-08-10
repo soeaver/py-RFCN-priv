@@ -417,6 +417,7 @@ message LayerParameter {
   optional WindowDataParameter window_data_param = 129;
   optional ROIPoolingParameter roi_pooling_param = 147;
   optional PSROIPoolingParameter psroi_pooling_param = 148;
+  optional DeformablePSROIPoolingParameter deformable_psroi_pooling_param = 1511;
   optional InnerProductBlobParameter inner_product_blob_param = 149;
   optional SmoothL1LossParameter smooth_l1_loss_param = 150;  
   optional BoxAnnotatorOHEMParameter box_annotator_ohem_param = 151;
@@ -921,6 +922,16 @@ message PSROIPoolingParameter {
    required float spatial_scale = 1; 
    required int32 output_dim = 2; // output channel number
    required int32 group_size = 3; // number of groups to encode position-sensitive score maps
+}
+message DeformablePSROIPoolingParameter {
+   required float spatial_scale = 1; 
+   required int32 output_dim = 2; // output channel number
+   required int32 group_size = 3; // number of groups to encode position-sensitive score maps
+   optional int32 pooled_size = 4; // fix pooled size
+   optional int32 part_size = 5 [default = 0]; // fix part size
+   optional int32 sample_per_part = 6 [default = 1];//fix samples per part
+   optional float trans_std = 7[default = 0.0]; //fix transition std
+   optional bool no_trans = 8 [default = false];//whether to disable trans parameter 
 }
 
 message InnerProductBlobParameter {
