@@ -1,5 +1,5 @@
-#ifndef CAFFE_ROI_POOLING_LAYER_HPP_
-#define CAFFE_ROI_POOLING_LAYER_HPP_
+#ifndef CAFFE_ROI_ALIGN_LAYER_HPP_
+#define CAFFE_ROI_ALIGN_LAYER_HPP_
 
 #include <vector>
 
@@ -53,7 +53,7 @@ class ROIAlignLayer : public Layer<Dtype> {
   virtual void Reshape(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top);
 
-  virtual inline const char* type() const { return "ROIPooling"; }
+  virtual inline const char* type() const { return "ROIAlign"; }
 
   virtual inline int MinBottomBlobs() const { return 2; }
   virtual inline int MaxBottomBlobs() const { return 2; }
@@ -82,4 +82,4 @@ class ROIAlignLayer : public Layer<Dtype> {
 
 }  // namespace caffe
 
-#endif  // CAFFE_ROI_POOLING_LAYER_HPP_
+#endif  // CAFFE_ROI_ALIGN_LAYER_HPP_
