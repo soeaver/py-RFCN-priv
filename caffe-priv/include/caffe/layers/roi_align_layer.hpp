@@ -14,7 +14,7 @@ namespace caffe {
  * @brief Perform max pooling on regions of interest specified by input, takes
  *        as input N feature maps and a list of R regions of interest.
  *
- *   ROIPoolingLayer takes 2 inputs and produces 1 output. bottom[0] is
+ *   ROIAlignLayer takes 2 inputs and produces 1 output. bottom[0] is
  *   [N x C x H x W] feature maps on which pooling is performed. bottom[1] is
  *   [R x 5] containing a list R ROI tuples with batch index and coordinates of
  *   regions of interest. Each row in bottom[1] is a ROI tuple in format
