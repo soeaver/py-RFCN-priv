@@ -25,6 +25,7 @@ py-RFCN-priv supports:
  - Performing bilinear interpolation operator accoording to input blobs size.
  - 2017/07/31:  support LargeMarginSoftmax and cpu forward psroipooling.
  - 2017/08/04:  add Deeplab and PSPNet support.
+ - 2017/08/10:  add Deform psroipooling and by [lzx1413](https://github.com/lzx1413).
  
  
 ### Installation
