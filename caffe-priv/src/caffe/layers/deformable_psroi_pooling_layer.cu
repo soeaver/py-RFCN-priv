@@ -139,7 +139,7 @@ namespace caffe {
     const int num_classes = no_trans_ ? 1 : bottom[2]->channels()/ 2;
     const int channels_each_class = no_trans_ ? output_dim_ : output_dim_ / num_classes;
     caffe_gpu_set(count, Dtype(0), top_data);
-    caffe_gpu_set(count, Dtype(-1), mapping_channel_ptr);
+    caffe_gpu_set(count, Dtype(0), mapping_channel_ptr);
     // NOLINT_NEXT_LINE(whitespace/operators)
 /*
     PSROIPoolingForward<Dtype> << <CAFFE_GET_BLOCKS(count),
@@ -295,6 +295,8 @@ namespace caffe {
     const int num_classes = no_trans_ ? 1 : bottom[2]->channels()/ 2;
     const int channels_each_class = no_trans_ ? output_dim_ : output_dim_ / num_classes;
     caffe_gpu_set(bottom[1]->count(), Dtype(0), bottom[1]->mutable_gpu_diff());
+    if(!no_trans_)
+    	caffe_gpu_set(bottom[2]->count(), Dtype(0), bottom[2]->mutable_gpu_diff());
     caffe_gpu_set(bottom_count, Dtype(0), bottom_data_diff);
     const int count = top[0]->count();
     // NOLINT_NEXT_LINE(whitespace/operators)
