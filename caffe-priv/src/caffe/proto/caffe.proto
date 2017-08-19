@@ -873,6 +873,7 @@ message InterpParameter {
   optional bool use_blob_size = 7 [default = false];// whether use another blob's size to resize the first one
 }
 
+// Message that stores parameters used by ROIAlignLayer
 message ROIAlignParameter {
   // Pad, kernel size, and stride are all given as a single value for equal
   // dimensions in height and width or as Y, X pairs.
