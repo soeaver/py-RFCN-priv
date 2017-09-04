@@ -28,6 +28,7 @@ py-RFCN-priv supports:
  - 2017/08/10:  add Deform psroipooling and by [lzx1413](https://github.com/lzx1413).
  - 2017/08/18:  add ROIAlign support.
  - 2017/08/27:  add [Axpy](https://github.com/hujie-frank/SENet) layer for Senet support.
+ - 2017/09/04:  add [Focal loss](https://github.com/zimenglan-sysu-512/Focal-Loss)
  
  
 ### Installation
