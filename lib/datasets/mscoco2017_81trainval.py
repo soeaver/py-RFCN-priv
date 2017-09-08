@@ -40,12 +40,12 @@ def _filter_crowd_proposals(roidb, crowd_thresh):
         roidb[ix]['gt_overlaps'] = scipy.sparse.csr_matrix(overlaps)
     return roidb
 
-class coco81_trainval(imdb):
+class mscoco2017_81trainval(imdb):
     def __init__(self):
-        imdb.__init__(self, 'coco81_trainval')
+        imdb.__init__(self, 'mscoco2017_81trainval')
         self.data_root = os.path.join(cfg.DATABASE_ROOT, 'MSCOCO')
-        self.source = os.path.join(cfg.DATABASE_ROOT, 'MSCOCO/annotations', 'coco_81_trainval_image2xml_p.txt')
-        self.img_set = os.path.join(cfg.DATABASE_ROOT, 'MSCOCO/annotations', 'coco_81_trainval_p.txt')
+        self.source = os.path.join(cfg.DATABASE_ROOT, 'MSCOCO2017/annotations', 'coco81_trainval_im2xml_pos.txt')
+        self.img_set = os.path.join(cfg.DATABASE_ROOT, 'MSCOCO2017/annotations', 'coco81_trainval_pos.txt')
 
         assert os.path.exists(self.data_root), \
                 'Data root path does not exist: {}'.format(self.data_root)
