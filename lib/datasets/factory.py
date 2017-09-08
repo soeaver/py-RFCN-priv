@@ -19,6 +19,7 @@ from datasets.coco21trainval_voc0712trainval import coco21trainval_voc0712trainv
 
 from datasets.coco81_trainval35k import coco81_trainval35k
 from datasets.coco81_trainval import coco81_trainval
+from datasets.mscoco2017_81trainval import mscoco2017_81trainval
 
 from datasets.wider_face_trainval import wider_face_trainval
 
