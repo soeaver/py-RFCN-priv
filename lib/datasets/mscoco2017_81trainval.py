@@ -43,7 +43,7 @@ def _filter_crowd_proposals(roidb, crowd_thresh):
 class mscoco2017_81trainval(imdb):
     def __init__(self):
         imdb.__init__(self, 'mscoco2017_81trainval')
-        self.data_root = os.path.join(cfg.DATABASE_ROOT, 'MSCOCO')
+        self.data_root = os.path.join(cfg.DATABASE_ROOT, 'MSCOCO2017')
         self.source = os.path.join(cfg.DATABASE_ROOT, 'MSCOCO2017/annotations', 'coco81_trainval_im2xml_pos.txt')
         self.img_set = os.path.join(cfg.DATABASE_ROOT, 'MSCOCO2017/annotations', 'coco81_trainval_pos.txt')
 
