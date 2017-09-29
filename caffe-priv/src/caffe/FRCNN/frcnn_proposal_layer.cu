@@ -4,7 +4,8 @@
 // Licensed under The MIT License [see fast-rcnn/LICENSE for details]
 // Written by Ross Girshick
 // ------------------------------------------------------------------
-#include "caffe/FRCNN/cub/cub.cuh"
+// #include "caffe/FRCNN/cub/cub.cuh"
+#include "/usr/local/cuda/include/thrust/system/cuda/detail/cub/cub.cuh"
 #include <iomanip>
 
 #include "caffe/FRCNN/frcnn_proposal_layer.hpp"
