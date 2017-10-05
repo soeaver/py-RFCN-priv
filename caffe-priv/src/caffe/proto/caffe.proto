@@ -309,7 +309,7 @@ message ParamSpec {
 // NOTE
 // Update the next available ID when you add a new LayerParameter field.
 //
-// LayerParameter next available layer-specific ID: 150 (last added: recurrent_param)
+// LayerParameter next available layer-specific ID: 20008 (last added: margin_inner_product_param)
 message LayerParameter {
   optional string name = 1; // the layer name
   optional string type = 2; // the layer type
@@ -403,6 +403,7 @@ message LayerParameter {
   optional ReshapeParameter reshape_param = 133;
   optional ROIMaskPoolingParameter roi_mask_pooling_param = 8266713;
   optional ROIWarpingParameter roi_warping_param = 11870;
+  optional MarginInnerProductParameter margin_inner_product_param = 20008;
   optional MaskResizeParameter mask_resize_param = 11890;
   optional ScaleParameter scale_param = 142;
   optional SegAccuracyParameter seg_accuracy_param = 20003;
@@ -1049,6 +1050,28 @@ message MemoryDataParameter {
   optional uint32 channels = 2;
   optional uint32 height = 3;
   optional uint32 width = 4;
+}
+
+message MarginInnerProductParameter {
+  optional uint32 num_output = 1; // The number of outputs for the layer
+  enum MarginType {
+    SINGLE = 0;
+    DOUBLE = 1;
+    TRIPLE = 2;
+    QUADRUPLE = 3;
+  }
+  optional MarginType type = 2 [default = SINGLE]; 
+  optional FillerParameter weight_filler = 3; // The filler for the weight
+
+  // The first axis to be lumped into a single inner product computation;
+  // all preceding axes are retained in the output.
+  // May be negative to index from the end (e.g., -1 for the last axis).
+  optional int32 axis = 4 [default = 1];
+  optional float base = 5 [default = 1];
+  optional float gamma = 6 [default = 0];
+  optional float power = 7 [default = 1];
+  optional int32 iteration = 8 [default = 0];
+  optional float lambda_min = 9 [default = 0];
 }
 
 message MVNParameter {
