@@ -83,6 +83,7 @@ void FrcnnProposalLayer<Dtype>::Forward_cpu(const vector<Blob<Dtype> *> &bottom,
   std::vector<Point4f<Dtype> > anchors;
   typedef pair<Dtype, int> sort_pair;
   std::vector<sort_pair> sort_vector;
+  Point4f<Dtype> box_delta;
 
   const Dtype bounds[4] = { im_width - 1, im_height - 1, im_width - 1, im_height -1 };
   const Dtype min_size = bottom_im_info[2] * rpn_min_size;
@@ -102,11 +103,22 @@ void FrcnnProposalLayer<Dtype>::Forward_cpu(const vector<Blob<Dtype> *> &bottom,
             FrcnnParam::anchors[k * 4 + 2] + i * FrcnnParam::feat_stride,  // shift_x[i][j];
             FrcnnParam::anchors[k * 4 + 3] + j * FrcnnParam::feat_stride); // shift_y[i][j];
 
-        Point4f<Dtype> box_delta(
-            bottom_rpn_bbox[(k * 4 + 0) * height * width + j * width + i],
-            bottom_rpn_bbox[(k * 4 + 1) * height * width + j * width + i],
-            bottom_rpn_bbox[(k * 4 + 2) * height * width + j * width + i],
-            bottom_rpn_bbox[(k * 4 + 3) * height * width + j * width + i]);
+        if(this->phase_ == TRAIN && FrcnnParam::rpn_normalize_targets){
+            Point4f<Dtype> _box_delta(
+                bottom_rpn_bbox[(k * 4 + 0) * height * width + j * width + i]*FrcnnParam::rpn_normalize_stds[0]+FrcnnParam::rpn_normalize_means[0],
+                bottom_rpn_bbox[(k * 4 + 1) * height * width + j * width + i]*FrcnnParam::rpn_normalize_stds[1]+FrcnnParam::rpn_normalize_means[1],
+                bottom_rpn_bbox[(k * 4 + 2) * height * width + j * width + i]*FrcnnParam::rpn_normalize_stds[2]+FrcnnParam::rpn_normalize_means[2],
+                bottom_rpn_bbox[(k * 4 + 3) * height * width + j * width + i]*FrcnnParam::rpn_normalize_stds[3]+FrcnnParam::rpn_normalize_means[3]);
+                box_delta = _box_delta;
+        }
+        else{
+            Point4f<Dtype> _box_delta(
+                bottom_rpn_bbox[(k * 4 + 0) * height * width + j * width + i],
+                bottom_rpn_bbox[(k * 4 + 1) * height * width + j * width + i],
+                bottom_rpn_bbox[(k * 4 + 2) * height * width + j * width + i],
+                bottom_rpn_bbox[(k * 4 + 3) * height * width + j * width + i]);
+                box_delta = _box_delta;
+        }
 
         Point4f<Dtype> cbox = bbox_transform_inv(anchor, box_delta);
 
