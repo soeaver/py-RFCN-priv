@@ -240,8 +240,8 @@ void FrcnnAnchorTargetLayer<Dtype>::Forward_cpu(
   Point4f<Dtype> rpn_normalize_means = FrcnnParam::rpn_normalize_means;
   Point4f<Dtype> rpn_normalize_stds = FrcnnParam::rpn_normalize_stds;
   if (!rpn_normalize_targets){
-    Point4f<Dtype> rpn_normalize_means = {0.0 , 0.0 , 0.0 , 0.0};
-    Point4f<Dtype> rpn_normalize_stds = {1.0, 1.0, 1.0, 1.0};}
+    rpn_normalize_means = {0.0 , 0.0 , 0.0 , 0.0};
+    rpn_normalize_stds = {1.0, 1.0, 1.0, 1.0};}
 
   for (int i =0; i < argmax_overlaps.size(); i++) {
     if (argmax_overlaps[i] < 0 )
