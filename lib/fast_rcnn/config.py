@@ -34,28 +34,25 @@ cfg = __C
 
 __C.TRAIN = edict()
 
-__C.TRAIN.DATASET = edict()
-__C.TRAIN.DATASET.DATA_ROOT = ' ' # Root dir for dataset
-__C.TRAIN.DATASET.LABELMAP_PATH = ' ' # Lablemap for classes to ID
-__C.TRAIN.DATASET.SOURCE = ' ' # Train list for images and annotation XML or categroy label
-__C.TRAIN.DATASET.MIN_AREA = 16 # Min area of bbox
-__C.TRAIN.DATASET.MAX_RATIO = 32    # Max long/short ratio of bbox
+__C.TRAIN.DATA_ROOT = ' ' # Root dir for dataset
+__C.TRAIN.LABELMAP_PATH = ' ' # Lablemap for classes to ID
+__C.TRAIN.SOURCE = ' ' # Train list for images and annotation XML or categroy label
+__C.TRAIN.MIN_AREA = 16 # Min area of bbox
+__C.TRAIN.MAX_RATIO = 32    # Max long/short ratio of bbox
 
-__C.TRAIN.IM_AUG = edict()
-__C.TRAIN.IM_AUG.LABEL_SHUFFLING = False   # Label shuffle bootstrapping
-__C.TRAIN.IM_AUG.SHUFFLE = True    # Shuffle train images
-__C.TRAIN.IM_AUG.USE_FLIPPED = True    # Use horizontally-flipped images during training?
-__C.TRAIN.IM_AUG.COLOR_FACTOR = (0.95, 1.05)   # color aug
-__C.TRAIN.IM_AUG.CONTRAST_FACTOR = (0.95, 1.05)    # contrast aug
-__C.TRAIN.IM_AUG.BRIGTHNESS_FACTOR = (0.95, 1.05)  # brightness aug
-__C.TRAIN.IM_AUG.GAUSSIAN_BLUR = False  # 1/4 prop for (3, 3) gaussian blur
+__C.TRAIN.LABEL_SHUFFLING = False   # Label shuffle bootstrapping
+__C.TRAIN.SHUFFLE = True    # Shuffle train images
+__C.TRAIN.USE_FLIPPED = True    # Use horizontally-flipped images during training?
+__C.TRAIN.COLOR_FACTOR = (0.95, 1.05)   # color aug
+__C.TRAIN.CONTRAST_FACTOR = (0.95, 1.05)    # contrast aug
+__C.TRAIN.BRIGTHNESS_FACTOR = (0.95, 1.05)  # brightness aug
+__C.TRAIN.GAUSSIAN_BLUR = False  # 1/4 prop for (3, 3) gaussian blur
 
-__C.TRAIN.IM_CROP = edict() # im crop implement as SSD
-__C.TRAIN.IM_CROP.CROP = False
-__C.TRAIN.IM_CROP.CROP_MAX_ATTEMPTS = 200
-__C.TRAIN.IM_CROP.CROP_AREA = (0.5, 1)
-__C.TRAIN.IM_CROP.CROP_RATIO = (0.5, 2)
-__C.TRAIN.IM_CROP.MIN_COVERED = 0.5
+__C.TRAIN.CROP = False # im crop implement as SSD
+__C.TRAIN.CROP_MAX_ATTEMPTS = 200
+__C.TRAIN.CROP_AREA = (0.5, 1)
+__C.TRAIN.CROP_RATIO = (0.5, 2)
+__C.TRAIN.MIN_COVERED = 0.5
 
 # Scales to use during training (can list multiple scales)
 # Each scale is the pixel size of an image's shortest side
