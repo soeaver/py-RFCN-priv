@@ -22,7 +22,7 @@ from fast_rcnn.config import cfg
 class wider_face_trainval(imdb):
     def __init__(self):
         imdb.__init__(self, 'wider_face_trainval')
-        self.data_root = os.path.join(cfg.DATABASE_ROOT, 'Wider_Face')
+        self.data_root = os.path.join(cfg.DATABASE_ROOT, 'Wider_Face/')
         self.source = os.path.join(cfg.DATABASE_ROOT, 'Wider_Face/wider_face_annotation_refine', 'wider_trainval_img2xml.txt')
         self.img_set = os.path.join(cfg.DATABASE_ROOT, 'Wider_Face/wider_face_annotation_refine', 'wider_trainval.txt')
 
