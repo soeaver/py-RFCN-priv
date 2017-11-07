@@ -66,7 +66,15 @@ py-RFCN-priv supports:
     # NCCL (https://github.com/NVIDIA/nccl) is necessary for multi-GPU training with python layer
     USE_NCCL := 1
     ```
-   
+    
+   **How to install nccl**
+    ```
+    git clone https://github.com/NVIDIA/nccl.git
+    cd nccl
+    sudo make install -j
+    sudo ldconfig
+    ```
+    
   ### License
 
 py-RFCN-priv and caffe-priv are released under the MIT License (refer to the LICENSE file for details).
