@@ -29,6 +29,7 @@ py-RFCN-priv supports:
  - 2017/08/18:  add ROIAlign support.
  - 2017/08/27:  add [Axpy](https://github.com/hujie-frank/SENet) layer for Senet support.
  - 2017/09/04:  add [Focal loss](https://github.com/zimenglan-sysu-512/Focal-Loss)
+ - 2017/11/09:  add SSD support.
  
  
 ### Installation
@@ -72,6 +73,20 @@ py-RFCN-priv supports:
     git clone https://github.com/NVIDIA/nccl.git
     cd nccl
     sudo make install -j
+    sudo ldconfig
+    ```
+    
+   **Update gcc4.8 to gcc5.x on ubuntu14.04**
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    
+    sudo apt-get install software-properties-common
+    
+    sudo apt-get install gcc-5 g++-5
+    
+    sudo ln -s /usr/bin/gcc-5 /usr/bin/gcc -f
+    sudo ln -s /usr/bin/g++-5 /usr/bin/g++ -f
     sudo ldconfig
     ```
     
