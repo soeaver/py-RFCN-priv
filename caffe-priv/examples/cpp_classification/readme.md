@@ -1,3 +1,4 @@
+# classification.cpp
 ---
 title: CaffeNet C++ Classification example
 description: A simple example performing image classification using the low-level C++ API.
@@ -75,3 +76,76 @@ operations there.
 batching (independent images are classified in a single forward pass).
 * Use multiple classification threads to ensure the GPU is always fully
 utilized and not waiting for an I/O blocked CPU thread.
+
+********************************************************************************************************************
+
+
+classification_multithread.cpp
+
+add by xxs. 2017.12.10
+
+********************************************************************************************************************
+---
+title: CaffeNet C++ Classification example by multithread
+description: use mulithread and multi-GPU.
+multithread: use mulithread to ensure the GPU is always fully
+utilized and not waiting for an I/O blocked CPU thread
+multi-GPU :use multi-GPU to improve the test speed.
+---
+# Classifying ImageNet: using the C++ API
+
+Caffe, at its core, is written in C++. It is possible to use the C++
+API of Caffe to implement an image classification application similar
+to the Python code presented in one of the Notebook examples. To look
+at a more general-purpose example of the Caffe C++ API, you should
+study the source code of the command line tool `caffe` in `tools/caffe.cpp`.
+
+## Presentation
+
+A simple C++ code is proposed in
+`examples/cpp_classification/classification.cpp`. For the sake of
+efficiency, this example support batching of multiple independent samples. This example is
+trying to reach the maximum possible classification throughput on
+a system, using batch multithreading multi-GPU.
+
+## Compiling
+
+The C++ example is built automatically when compiling Caffe. To
+compile Caffe you should follow the documented instructions. The
+classification_multithread example will be built as `examples/classification_multithread.bin`
+in your build directory.
+
+## Usage
+
+To use the pre-trained CaffeNet model with the classification example,
+you need to download it from the "Model Zoo" using the following
+script:
+```
+./scripts/download_model_binary.py models/bvlc_reference_caffenet
+```
+The ImageNet labels file (also called the *synset file*) is also
+required in order to map a prediction to the name of the class:
+```
+./data/ilsvrc12/get_ilsvrc_aux.sh
+```
+1、before use this demo to test your own data , you should modifier the following codes for example:
+
+
+```
+string model_file   = "/home/xxs/workspace/CudaLayer/test/deploy.prototxt";
+string trained_file = "/home/xxs/workspace/Resnet18_cls_iter_2500_merge.caffemodel";
+float mean_file[3]    = {69.966, 69.966, 69.966};
+float std_file[3] = {1.0, 1.0, 1.0};
+string label_file   = "/home/xxs/workspace/CudaLayer/multi_test/cnt_synset_word.txt";
+string txt_file = "/home/xxs/workspace/CudaLayer/test/test.txt";
+string dir = "/home/xxs/workspace/CudaLayer/test/";
+```
+2、recompiling Caffe .
+```
+make
+```
+3、run classification_multithread.bin in "examples/classification_multithread.bin".
+```
+./classification_multithread.bin.
+```
+
