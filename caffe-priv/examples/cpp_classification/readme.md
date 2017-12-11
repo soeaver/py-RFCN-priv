@@ -1,4 +1,4 @@
-classification.cpp
+# classification.cpp
 ---
 title: CaffeNet C++ Classification example
 description: A simple example performing image classification using the low-level C++ API.
