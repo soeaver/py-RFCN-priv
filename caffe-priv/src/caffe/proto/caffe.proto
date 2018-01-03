@@ -427,6 +427,7 @@ message LayerParameter {
   optional FrcnnAnchorTargetParameter frcnn_anchor_target_param = 40000;
   optional FrcnnProposalParameter frcnn_proposal_param = 40001;
   optional FrcnnProposalTargetParameter frcnn_proposal_target_param = 40002;
+  optional ROIAlignMaskParameter roi_align_mask_param = 40003;
 }
 
 message FrcnnProposalTargetParameter {
@@ -1196,6 +1197,16 @@ message ROIMaskPoolingParameter {
   optional uint32 pooled_w = 2 [default = 0]; // The pooled output width
   // Multiplicative spatial scale factor to translate ROI coords from their
   // input scale to the scale used when pooling
+  optional float spatial_scale = 3 [default = 1];
+  optional float spatial_shift = 7 [default = 0];
+  optional int32 half_part = 4 [default = 0];
+  optional float roi_scale = 5 [default = 1];
+  optional float mask_scale = 6 [default = 0];
+}
+// Message that stores parameters used by ROIMaskPooling
+message ROIAlignMaskParameter {
+  optional uint32 pooled_h = 1 [default = 0]; // The pooled output height
+  optional uint32 pooled_w = 2 [default = 0]; // The pooled output width
   optional float spatial_scale = 3 [default = 1];
   optional float spatial_shift = 7 [default = 0];
   optional int32 half_part = 4 [default = 0];
