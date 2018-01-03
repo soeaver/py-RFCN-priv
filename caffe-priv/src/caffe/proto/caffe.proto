@@ -401,6 +401,7 @@ message LayerParameter {
   optional RecurrentParameter recurrent_param = 146;
   optional ReductionParameter reduction_param = 136;
   optional ReLUParameter relu_param = 123;
+  optional ReLUXParameter relux_param = 152;
   optional ReshapeParameter reshape_param = 133;
   optional ROIMaskPoolingParameter roi_mask_pooling_param = 8266713;
   optional ROIWarpingParameter roi_warping_param = 11870;
@@ -1286,6 +1287,12 @@ message ReLUParameter {
   optional Engine engine = 2 [default = DEFAULT];
 }
 
+// Message that stores parameters used by ReLUXLayer
+message ReLUXParameter {
+  optional float negative_slope = 1 [default = 0];
+  optional float maximal_value = 2 [default = 6];
+}
+
 message ReshapeParameter {
   // Specify the output dimensions. If some of the dimensions are set to 0,
   // the corresponding dimension from the bottom layer is used (unchanged).
@@ -1562,6 +1569,7 @@ message V1LayerParameter {
     POOLING = 17;
     POWER = 26;
     RELU = 18;
+    RELUX = 54;
     SIGMOID = 19;
     SIGMOID_CROSS_ENTROPY_LOSS = 27;
     SILENCE = 36;
@@ -1610,6 +1618,7 @@ message V1LayerParameter {
   optional PoolingParameter pooling_param = 19;
   optional PowerParameter power_param = 21;
   optional ReLUParameter relu_param = 30;
+  optional ReLUXParameter relux_param = 54;
   optional SigmoidParameter sigmoid_param = 38;
   optional SoftmaxParameter softmax_param = 39;
   optional SliceParameter slice_param = 31;
