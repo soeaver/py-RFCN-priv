@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <vector>
 
-#include "caffe/layers/roi_align_mask_layer.hpp"
+#include "caffe/layers/roi_mask_align_layer.hpp"
 using std::max;
 using std::min;
 
@@ -10,7 +10,7 @@ namespace caffe {
 
 
 template <typename Dtype>
-__global__ void ROIAlignMaskForward(const int nthreads, const Dtype* bottom_data,
+__global__ void ROIMaskAlignForward(const int nthreads, const Dtype* bottom_data,
     const Dtype spatial_scale, const Dtype spatial_shift, const int half_part,
     const Dtype roi_scale, const Dtype mask_scale,
     const int channels, const int height,
@@ -148,7 +148,7 @@ __global__ void ROIAlignMaskForward(const int nthreads, const Dtype* bottom_data
 }
 
 template <typename Dtype>
-void ROIAlignMaskLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+void ROIMaskAlignLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top) {
   const Dtype* bottom_data = bottom[0]->gpu_data();
   const Dtype* bottom_rois = bottom[1]->gpu_data();
@@ -162,7 +162,7 @@ void ROIAlignMaskLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   }
   int count = top[0]->count();
   // NOLINT_NEXT_LINE(whitespace/operators)
-  ROIAlignMaskForward<Dtype><<<CAFFE_GET_BLOCKS(count), CAFFE_CUDA_NUM_THREADS>>>(
+  ROIMaskAlignForward<Dtype><<<CAFFE_GET_BLOCKS(count), CAFFE_CUDA_NUM_THREADS>>>(
       count, bottom_data, spatial_scale_, spatial_shift_, half_part_, roi_scale_, mask_scale_,
       channels_, height_, width_,pooled_height_, pooled_width_, bottom_rois, top_data,
       argmax_data_x, argmax_data_y);
@@ -170,7 +170,7 @@ void ROIAlignMaskLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 }
 
 template <typename Dtype>
-__global__ void ROIAlignMaskBackward(
+__global__ void ROIMaskAlignBackward(
     const int nthreads, const Dtype* top_diff, const int* argmax_data_x,
     const int* argmax_data_y, const int num_rois, const Dtype spatial_scale,
     const Dtype spatial_shift, const int half_part, const Dtype roi_scale, const Dtype mask_scale,
@@ -284,7 +284,7 @@ __global__ void ROIAlignMaskBackward(
 }
 
 template <typename Dtype>
-void ROIAlignMaskLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
+void ROIMaskAlignLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
       const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom) {
   if (!propagate_down[0]) {
     return;
@@ -302,13 +302,13 @@ void ROIAlignMaskLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
       caffe_gpu_asum<Dtype>(1, scale_pred, &spatial_scale_);
   }
   // NOLINT_NEXT_LINE(whitespace/operators)
-  ROIAlignMaskBackward<Dtype><<<CAFFE_GET_BLOCKS(count), CAFFE_CUDA_NUM_THREADS>>>(
+  ROIMaskAlignBackward<Dtype><<<CAFFE_GET_BLOCKS(count), CAFFE_CUDA_NUM_THREADS>>>(
       count, top_diff, argmax_data_x, argmax_data_y, top[0]->num(), spatial_scale_,
       spatial_shift_, half_part_, roi_scale_, mask_scale_, channels_,
       height_, width_, pooled_height_, pooled_width_, bottom_diff, bottom_rois);
   CUDA_POST_KERNEL_CHECK;
 }
 
-INSTANTIATE_LAYER_GPU_FUNCS(ROIAlignMaskLayer);
+INSTANTIATE_LAYER_GPU_FUNCS(ROIMaskAlignLayer);
 
 }
