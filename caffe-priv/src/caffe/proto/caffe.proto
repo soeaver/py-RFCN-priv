@@ -430,6 +430,14 @@ message LayerParameter {
   optional FrcnnProposalParameter frcnn_proposal_param = 40001;
   optional FrcnnProposalTargetParameter frcnn_proposal_target_param = 40002;
   optional ROIMaskAlignParameter roi_mask_align_param = 40003;
+  optional BoxesObjParameter boxes_obj_param = 40004;
+}
+
+message BoxesObjParameter {
+  optional float cls_thresh = 1 [default = 0.7];
+  optional float nms = 2 [default = 0.3];
+  optional bool box_vote = 3 [default = true];
+  repeated int32 cls_indexes = 4;
 }
 
 message FrcnnProposalTargetParameter {
@@ -1631,6 +1639,7 @@ message V1LayerParameter {
   optional FrcnnAnchorTargetParameter frcnn_anchor_target_param = 51;
   optional FrcnnProposalParameter frcnn_proposal_param = 52;
   optional FrcnnProposalTargetParameter frcnn_proposal_target_param = 53;
+  optional BoxesObjParameter boxes_obj_param = 56;
 }
 
 // DEPRECATED: V0LayerParameter is the old way of specifying layer parameters
